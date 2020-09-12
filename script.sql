@@ -5,19 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema rppzl
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema rppzl
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `rppzl` DEFAULT CHARACTER SET utf8 ;
+USE `rppzl` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`country`
+-- Table `rppzl`.`country`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`country` (
+CREATE TABLE IF NOT EXISTS `rppzl`.`country` (
   `country_id` INT NOT NULL AUTO_INCREMENT,
   `country` VARCHAR(45) NOT NULL,
   `citizenship` VARCHAR(45) NOT NULL,
@@ -26,9 +26,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`city`
+-- Table `rppzl`.`city`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`city` (
+CREATE TABLE IF NOT EXISTS `rppzl`.`city` (
   `city_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `country_id` INT NOT NULL,
@@ -36,16 +36,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`city` (
   INDEX `FK_CITY_COUNTRY_idx` (`country_id` ASC) VISIBLE,
   CONSTRAINT `FK_CITY_COUNTRY`
     FOREIGN KEY (`country_id`)
-    REFERENCES `mydb`.`country` (`country_id`)
+    REFERENCES `rppzl`.`country` (`country_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`client`
+-- Table `rppzl`.`client`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`client` (
+CREATE TABLE IF NOT EXISTS `rppzl`.`client` (
   `client_id` INT NOT NULL AUTO_INCREMENT,
   `lastname` VARCHAR(45) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
@@ -76,17 +76,17 @@ CREATE TABLE IF NOT EXISTS `mydb`.`client` (
   INDEX `FK_CLIENT_COUNTRY_idx` (`citizenship_id` ASC) VISIBLE,
   CONSTRAINT `FK_CLIENT_CITY_RESIDENCE`
     FOREIGN KEY (`city_of_residence_id`)
-    REFERENCES `mydb`.`city` (`city_id`)
+    REFERENCES `rppzl`.`city` (`city_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
   CONSTRAINT `FK_CLIENT_CITY_REGISTRATION`
     FOREIGN KEY (`city_of_registration_id`)
-    REFERENCES `mydb`.`city` (`city_id`)
+    REFERENCES `rppzl`.`city` (`city_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
   CONSTRAINT `FK_CLIENT_COUNTRY`
     FOREIGN KEY (`citizenship_id`)
-    REFERENCES `mydb`.`country` (`country_id`)
+    REFERENCES `rppzl`.`country` (`country_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -97,39 +97,39 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `mydb`.`country`
+-- Data for table `rppzl`.`country`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `mydb`;
-INSERT INTO `mydb`.`country` (`country_id`, `country`, `citizenship`) VALUES (1, 'Беларусь', 'белорус/белоруска');
-INSERT INTO `mydb`.`country` (`country_id`, `country`, `citizenship`) VALUES (2, 'Россия', 'россиянин/россиянка');
-INSERT INTO `mydb`.`country` (`country_id`, `country`, `citizenship`) VALUES (3, 'США', 'американец/американка');
-INSERT INTO `mydb`.`country` (`country_id`, `country`, `citizenship`) VALUES (4, 'Украина', 'украинец/украинка');
-INSERT INTO `mydb`.`country` (`country_id`, `country`, `citizenship`) VALUES (5, 'Латвия', 'латвиец/латвийка');
-INSERT INTO `mydb`.`country` (`country_id`, `country`, `citizenship`) VALUES (6, 'Литва', 'литовец/литовка');
-INSERT INTO `mydb`.`country` (`country_id`, `country`, `citizenship`) VALUES (7, 'Польша', 'поляк/полька');
-INSERT INTO `mydb`.`country` (`country_id`, `country`, `citizenship`) VALUES (8, 'Германия', 'немец/немка');
-INSERT INTO `mydb`.`country` (`country_id`, `country`, `citizenship`) VALUES (9, 'Франция', 'француз/француженка');
-INSERT INTO `mydb`.`country` (`country_id`, `country`, `citizenship`) VALUES (10, 'Китай', 'китаец/китаянка');
+USE `rppzl`;
+INSERT INTO `rppzl`.`country` (`country_id`, `country`, `citizenship`) VALUES (1, 'Беларусь', 'белорус/белоруска');
+INSERT INTO `rppzl`.`country` (`country_id`, `country`, `citizenship`) VALUES (2, 'Россия', 'россиянин/россиянка');
+INSERT INTO `rppzl`.`country` (`country_id`, `country`, `citizenship`) VALUES (3, 'США', 'американец/американка');
+INSERT INTO `rppzl`.`country` (`country_id`, `country`, `citizenship`) VALUES (4, 'Украина', 'украинец/украинка');
+INSERT INTO `rppzl`.`country` (`country_id`, `country`, `citizenship`) VALUES (5, 'Латвия', 'латвиец/латвийка');
+INSERT INTO `rppzl`.`country` (`country_id`, `country`, `citizenship`) VALUES (6, 'Литва', 'литовец/литовка');
+INSERT INTO `rppzl`.`country` (`country_id`, `country`, `citizenship`) VALUES (7, 'Польша', 'поляк/полька');
+INSERT INTO `rppzl`.`country` (`country_id`, `country`, `citizenship`) VALUES (8, 'Германия', 'немец/немка');
+INSERT INTO `rppzl`.`country` (`country_id`, `country`, `citizenship`) VALUES (9, 'Франция', 'француз/француженка');
+INSERT INTO `rppzl`.`country` (`country_id`, `country`, `citizenship`) VALUES (10, 'Китай', 'китаец/китаянка');
 
 COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `mydb`.`city`
+-- Data for table `rppzl`.`city`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `mydb`;
-INSERT INTO `mydb`.`city` (`city_id`, `name`, `country_id`) VALUES (1, 'Минск', 1);
-INSERT INTO `mydb`.`city` (`city_id`, `name`, `country_id`) VALUES (2, 'Москва', 2);
-INSERT INTO `mydb`.`city` (`city_id`, `name`, `country_id`) VALUES (3, 'Вашингтон', 3);
-INSERT INTO `mydb`.`city` (`city_id`, `name`, `country_id`) VALUES (4, 'Киев', 4);
-INSERT INTO `mydb`.`city` (`city_id`, `name`, `country_id`) VALUES (5, 'Рига', 5);
-INSERT INTO `mydb`.`city` (`city_id`, `name`, `country_id`) VALUES (6, 'Вильнюс', 6);
-INSERT INTO `mydb`.`city` (`city_id`, `name`, `country_id`) VALUES (7, 'Варшава', 7);
-INSERT INTO `mydb`.`city` (`city_id`, `name`, `country_id`) VALUES (8, 'Берлин', 8);
-INSERT INTO `mydb`.`city` (`city_id`, `name`, `country_id`) VALUES (9, 'Париж', 9);
-INSERT INTO `mydb`.`city` (`city_id`, `name`, `country_id`) VALUES (10, 'Пекин', 10);
+USE `rppzl`;
+INSERT INTO `rppzl`.`city` (`city_id`, `name`, `country_id`) VALUES (1, 'Минск', 1);
+INSERT INTO `rppzl`.`city` (`city_id`, `name`, `country_id`) VALUES (2, 'Москва', 2);
+INSERT INTO `rppzl`.`city` (`city_id`, `name`, `country_id`) VALUES (3, 'Вашингтон', 3);
+INSERT INTO `rppzl`.`city` (`city_id`, `name`, `country_id`) VALUES (4, 'Киев', 4);
+INSERT INTO `rppzl`.`city` (`city_id`, `name`, `country_id`) VALUES (5, 'Рига', 5);
+INSERT INTO `rppzl`.`city` (`city_id`, `name`, `country_id`) VALUES (6, 'Вильнюс', 6);
+INSERT INTO `rppzl`.`city` (`city_id`, `name`, `country_id`) VALUES (7, 'Варшава', 7);
+INSERT INTO `rppzl`.`city` (`city_id`, `name`, `country_id`) VALUES (8, 'Берлин', 8);
+INSERT INTO `rppzl`.`city` (`city_id`, `name`, `country_id`) VALUES (9, 'Париж', 9);
+INSERT INTO `rppzl`.`city` (`city_id`, `name`, `country_id`) VALUES (10, 'Пекин', 10);
 
 COMMIT;
 
