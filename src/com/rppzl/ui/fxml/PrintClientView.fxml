@@ -25,7 +25,7 @@
                </BorderPane.margin>
                <children>
                   <Button fx:id="editButton" mnemonicParsing="false" text="Редактировать" />
-                  <Button fx:id="removeButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="90.0" text="Удалить" />
+                  <Button fx:id="removeButton" mnemonicParsing="false" onAction="#removeButtonPressed" prefHeight="26.0" prefWidth="90.0" text="Удалить" />
                   <Button fx:id="backToMenuButton" mnemonicParsing="false" onAction="#changeSceneToMainMenu" text="Вернуться в меню" />
                </children>
             </HBox>
