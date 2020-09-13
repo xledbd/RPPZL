@@ -2,7 +2,7 @@ package com.rppzl.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "client")
@@ -23,7 +23,7 @@ public class Client {
 	private String middleName;
 
 	@Column(name = "date")
-	private Date dateOfBirth;
+	private LocalDate dateOfBirth;
 
 	@Column(name = "passport_series")
 	private String passportSeries;
@@ -35,7 +35,7 @@ public class Client {
 	private String authority;
 
 	@Column(name = "date_of_issue")
-	private Date dateOfIssue;
+	private LocalDate dateOfIssue;
 
 	@Column(name = "identification_number")
 	private String identificationNumber;
@@ -120,11 +120,11 @@ public class Client {
 		this.middleName = middleName;
 	}
 
-	public Date getDateOfBirth() {
+	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
@@ -152,11 +152,11 @@ public class Client {
 		this.authority = authority;
 	}
 
-	public Date getDateOfIssue() {
+	public LocalDate getDateOfIssue() {
 		return dateOfIssue;
 	}
 
-	public void setDateOfIssue(Date dateOfIssue) {
+	public void setDateOfIssue(LocalDate dateOfIssue) {
 		this.dateOfIssue = dateOfIssue;
 	}
 
