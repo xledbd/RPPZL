@@ -84,5 +84,12 @@ public class PrintClientViewController implements Initializable {
             removeButton.setVisible(true);
         }
     }
+
+    public void removeButtonPressed(ActionEvent event){
+        Client client = tableView.getSelectionModel().getSelectedItem();
+        DAO<Client> dao = new ClientDAO();
+        dao.delete(client.getId());
+        tableView.getItems().remove(client);
+    }
 }
 
