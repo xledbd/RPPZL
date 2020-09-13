@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,6 +28,8 @@ import java.util.ResourceBundle;
 public class PrintClientViewController implements Initializable {
 
     @FXML private Button backToMenuButton;
+    @FXML private Button editButton;
+    @FXML private Button removeButton;
 
     @FXML private TableView<Client> tableView;
     @FXML private TableColumn<Client, String> lastNameColumn;
@@ -69,5 +72,17 @@ public class PrintClientViewController implements Initializable {
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
 
         tableView.setItems(getClientObservableList());
+
+        editButton.setVisible(false);
+        removeButton.setVisible(false);
+    }
+
+    public void tableRowSelected(MouseEvent event){
+        Client client = tableView.getSelectionModel().getSelectedItem();
+        if(client!=null){
+            editButton.setVisible(true);
+            removeButton.setVisible(true);
+        }
     }
 }
+

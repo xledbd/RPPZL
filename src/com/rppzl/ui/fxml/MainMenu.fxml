@@ -14,22 +14,12 @@
       </Label>
       <AnchorPane layoutX="1.0" layoutY="80.0" prefHeight="206.0" prefWidth="500.0" style="-fx-background-color: #fafafa;">
          <children>
-            <Button fx:id="addButton" layoutX="127.0" layoutY="14.0" mnemonicParsing="false" onAction="#changeSceneToAddClientView" prefHeight="30.0" prefWidth="245.0" text="Добавить клиента" textOverrun="CLIP">
+            <Button fx:id="addButton" layoutX="127.0" layoutY="18.0" mnemonicParsing="false" onAction="#changeSceneToAddClientView" prefHeight="72.0" prefWidth="246.0" text="Добавить клиента" textOverrun="CLIP">
                <font>
                   <Font name="Corbel Light" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="editButton" layoutX="127.0" layoutY="61.0" mnemonicParsing="false" onAction="#changeSceneToEditClientView" prefHeight="30.0" prefWidth="245.0" text="Редактировать клиента">
-               <font>
-                  <Font name="Corbel Light" size="20.0" />
-               </font>
-            </Button>
-            <Button fx:id="removeButton" layoutX="127.0" layoutY="108.0" mnemonicParsing="false" onAction="#changeSceneToRemoveClientView" prefHeight="30.0" prefWidth="245.0" text="Удалить клиента">
-               <font>
-                  <Font name="Corbel Light" size="20.0" />
-               </font>
-            </Button>
-            <Button fx:id="printButton" layoutX="127.0" layoutY="155.0" mnemonicParsing="false" onAction="#changeSceneToPrintClientView" prefHeight="30.0" prefWidth="245.0" text="Список клиентов">
+            <Button fx:id="printButton" layoutX="127.0" layoutY="110.0" mnemonicParsing="false" onAction="#changeSceneToPrintClientView" prefHeight="72.0" prefWidth="245.0" text="Список клиентов">
                <font>
                   <Font name="Corbel Light" size="20.0" />
                </font>
