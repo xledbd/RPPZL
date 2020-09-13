@@ -27,6 +27,7 @@
         <!-- Map entities -->
         <mapping class="com.rppzl.entity.Country" />
         <mapping class="com.rppzl.entity.City" />
+        <mapping class="com.rppzl.entity.Client" />
 
 
     </session-factory>
