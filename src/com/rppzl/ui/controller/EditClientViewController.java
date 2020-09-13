@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class AddClientViewController {
+public class EditClientViewController {
     @FXML private Button backToMenuButton;
 
 
