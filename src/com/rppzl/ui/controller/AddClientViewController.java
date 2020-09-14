@@ -6,6 +6,7 @@ import com.rppzl.dao.CountryDAO;
 import com.rppzl.dao.DAO;
 import com.rppzl.entity.City;
 import com.rppzl.entity.Client;
+import com.rppzl.entity.ConstraintValidator;
 import com.rppzl.entity.Country;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,11 +20,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 public class AddClientViewController implements Initializable {
 
@@ -97,35 +101,42 @@ public class AddClientViewController implements Initializable {
 
         // TODO: validate fields
 
-        DAO<Client> dao = new ClientDAO();
-        dao.save(client);
+        Validator validator = ConstraintValidator.getInstance();
+        Set<ConstraintViolation<Client>> constraintViolations = validator.validate(client);
 
-        // TODO: add result label
+        if (constraintViolations.size() != 0) {
+            System.out.println("Validation error");
+        }
+        else {
+            DAO<Client> dao = new ClientDAO();
+            dao.save(client);
+            // TODO: add result label
 
-        lastNameField.clear();
-        firstNameField.clear();
-        middleNameField.clear();
-        dateOfBirthField.getEditor().clear();
-        passportSeriesField.clear();
-        passportNumberField.clear();
-        authorityField.clear();
-        dateOfIssueField.getEditor().clear();
-        identificationNumberField.clear();
-        placeOfBirthField.clear();
-        cityOfResidenceChoiceBox.setValue(null);
-        addressOfResidenceField.clear();
-        landlinePhoneField.clear();
-        mobilePhoneField.clear();
-        emailField.clear();
-        placeOfWorkField.clear();
-        positionField.clear();
-        cityOfRegistrationChoiceBox.setValue(null);
-        familyStatusChoiceBox.setValue(null);
-        citizenshipChoiceBox.setValue(null);
-        disabilityChoiceBox.setValue(null);
-        retireeCheckBox.setSelected(false);
-        monthlyIncomeField.clear();
+            lastNameField.clear();
+            firstNameField.clear();
+            middleNameField.clear();
+            dateOfBirthField.getEditor().clear();
+            passportSeriesField.clear();
+            passportNumberField.clear();
+            authorityField.clear();
+            dateOfIssueField.getEditor().clear();
+            identificationNumberField.clear();
+            placeOfBirthField.clear();
+            cityOfResidenceChoiceBox.setValue(null);
+            addressOfResidenceField.clear();
+            landlinePhoneField.clear();
+            mobilePhoneField.clear();
+            emailField.clear();
+            placeOfWorkField.clear();
+            positionField.clear();
+            cityOfRegistrationChoiceBox.setValue(null);
+            familyStatusChoiceBox.setValue(null);
+            citizenshipChoiceBox.setValue(null);
+            disabilityChoiceBox.setValue(null);
+            retireeCheckBox.setSelected(false);
+            monthlyIncomeField.clear();
 
+        }
     }
 
     public ObservableList<City> getCityObservableList() {
