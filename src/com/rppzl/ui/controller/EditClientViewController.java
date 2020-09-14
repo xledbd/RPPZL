@@ -1,10 +1,12 @@
 package com.rppzl.ui.controller;
 
 import com.rppzl.dao.CityDAO;
+import com.rppzl.dao.ClientDAO;
 import com.rppzl.dao.CountryDAO;
 import com.rppzl.dao.DAO;
 import com.rppzl.entity.City;
 import com.rppzl.entity.Client;
+import com.rppzl.entity.ConstraintValidator;
 import com.rppzl.entity.Country;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,12 +20,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 public class EditClientViewController implements Initializable {
+    private Client client;
+
     @FXML private Button backToMenuButton;
 
     @FXML private TextField lastNameField;
@@ -67,6 +75,7 @@ public class EditClientViewController implements Initializable {
     }
 
     public void initData(Client client){
+        this.client=client;
         lastNameField.setText(client.getLastName());
         firstNameField.setText(client.getFirstName());
         middleNameField.setText(client.getMiddleName());
@@ -91,6 +100,48 @@ public class EditClientViewController implements Initializable {
         retireeCheckBox.setSelected(client.isRetired());
         monthlyIncomeField.setText(client.getMonthlyIncome().toString());
 
+    }
+
+    public void editButtonPressed(ActionEvent event) {
+        Client client = this.client;
+        client.setLastName(lastNameField.getText());
+        client.setFirstName(firstNameField.getText());
+        client.setMiddleName(middleNameField.getText());
+        client.setDateOfBirth(dateOfBirthField.getValue());
+        client.setPassportSeries(passportSeriesField.getText());
+        client.setPassportNumber(passportNumberField.getText());
+        client.setAuthority(authorityField.getText());
+        client.setDateOfIssue(dateOfIssueField.getValue());
+        client.setIdentificationNumber(identificationNumberField.getText());
+        client.setPlaceOfBirth(placeOfBirthField.getText());
+        client.setCityOfResidence(cityOfResidenceChoiceBox.getValue());
+        client.setAddress(addressOfResidenceField.getText());
+        client.setLandlinePhone(landlinePhoneField.getText());
+        client.setMobilePhone(mobilePhoneField.getText());
+        client.setEmail(emailField.getText());
+        client.setPlaceOfWork(placeOfWorkField.getText());
+        client.setPosition(positionField.getText());
+        client.setCityOfRegistration(cityOfRegistrationChoiceBox.getValue());
+        client.setFamilyStatus(familyStatusChoiceBox.getValue());
+        client.setCitizenship(citizenshipChoiceBox.getValue());
+        client.setDisability(disabilityChoiceBox.getValue());
+        client.setRetired(retireeCheckBox.isSelected());
+        client.setMonthlyIncome(new BigDecimal(monthlyIncomeField.getText()));
+
+        // TODO: validate fields
+
+        Validator validator = ConstraintValidator.getInstance();
+        Set<ConstraintViolation<Client>> constraintViolations = validator.validate(client);
+
+        if (constraintViolations.size() != 0) {
+            System.out.println("Validation error");
+        }
+        else {
+            DAO<Client> dao = new ClientDAO();
+            dao.save(client);
+            // TODO: add result label
+
+        }
     }
 
     public ObservableList<City> getCityObservableList() {
