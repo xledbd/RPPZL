@@ -1,6 +1,7 @@
 package com.rppzl.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -13,33 +14,51 @@ public class Client {
 	@Column(name = "client_id")
 	private int id;
 
+	@NotNull
+	@Pattern(regexp = "^[A-Za-zа-яА-я]{1,45}$")
 	@Column(name = "lastname")
 	private String lastName;
 
+	@NotNull
+	@Pattern(regexp = "^[A-Za-zа-яА-я]{1,45}$")
 	@Column(name = "name")
 	private String firstName;
 
+	@NotNull
+	@Pattern(regexp = "^[A-Za-zа-яА-я]{1,45}$")
 	@Column(name = "middle_name")
 	private String middleName;
 
+	@NotNull
 	@Column(name = "date")
 	private LocalDate dateOfBirth;
 
+	@NotNull
+	@Pattern(regexp = "^[ABHKMPSD][BMHPC]$")
 	@Column(name = "passport_series")
 	private String passportSeries;
 
+	@NotNull
+	@Pattern(regexp = "^[0-9]{7}$")
 	@Column(name = "passport_number")
 	private String passportNumber;
 
+	@NotNull
+	@Pattern(regexp = "^[А-ЯA-Z ]{1,45}$")
 	@Column(name = "authority")
 	private String authority;
 
+	@NotNull
 	@Column(name = "date_of_issue")
 	private LocalDate dateOfIssue;
 
+	@NotNull
+	@Pattern(regexp = "^[0-9]{7}[A-Z][0-9]{4}PB[1-7]$")
 	@Column(name = "identification_number")
 	private String identificationNumber;
 
+	@NotNull
+	@Pattern(regexp = "^[A-Za-zа-яА-я]{1,45}$")
 	@Column(name = "place_of_birth")
 	private String placeOfBirth;
 
@@ -48,21 +67,28 @@ public class Client {
 	@JoinColumn(name = "city_of_residence_id")
 	private City cityOfResidence;
 
+	@NotNull
+	@Pattern(regexp = "^[A-Za-zа-яА-я0-9 /.-]{1,45}$")
 	@Column(name = "adress_of_residence")
 	private String address;
 
+	@Pattern(regexp = "^([0-9]{3}-[0-9]{2}-[0-9]{2})?$")
 	@Column(name = "lendline_phone")
 	private String landlinePhone;
 
+	@Pattern(regexp = "^(\\+[0-9]{11,12})?$")
 	@Column(name = "mobile_phone")
 	private String mobilePhone;
 
+	@Email
 	@Column(name = "Email")
 	private String email;
 
+	@Pattern(regexp = "^([A-Za-zа-яА-я0-9 /.-]{1,45})?$")
 	@Column(name = "place_of_work")
 	private String placeOfWork;
 
+	@Pattern(regexp = "^([A-Za-zа-яА-я /.-]{1,45})?$")
 	@Column(name = "position")
 	private String position;
 
@@ -71,6 +97,7 @@ public class Client {
 	@JoinColumn(name = "city_of_registration_id")
 	private City cityOfRegistration;
 
+	@NotNull
 	@Column(name = "family_status")
 	private String familyStatus;
 
@@ -79,12 +106,14 @@ public class Client {
 	@JoinColumn(name = "citizenship_id")
 	private Country citizenship;
 
+	@NotNull
 	@Column(name = "disability")
 	private String disability;
 
 	@Column(name = "retiree")
 	private boolean retired;
 
+	@DecimalMin(value = "0.0")
 	@Column(name = "monthly_income")
 	private BigDecimal monthlyIncome;
 
