@@ -1,6 +1,7 @@
 package com.rppzl.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "city")
@@ -54,5 +55,20 @@ public class City {
 	@Override
 	public String toString() {
 		return name + ", " + country.getCountry();
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		City city = (City) o;
+		return id == city.id &&
+				name.equals(city.name);
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, name);
 	}
 }

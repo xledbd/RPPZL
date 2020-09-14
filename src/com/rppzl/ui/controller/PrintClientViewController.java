@@ -91,5 +91,22 @@ public class PrintClientViewController implements Initializable {
         dao.delete(client.getId());
         tableView.getItems().remove(client);
     }
+
+    public void changeSceneToEditClientView(ActionEvent event) throws IOException
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com/rppzl/ui/fxml/EditClientView.fxml"));
+        Parent parent = loader.load();
+
+        Scene signupViewScene = new Scene(parent);
+        EditClientViewController controller = loader.getController();
+        controller.initData(tableView.getSelectionModel().getSelectedItem());
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setTitle("Редактирование клиента");
+        window.setScene(signupViewScene);
+        window.show();
+    }
+
 }
 
