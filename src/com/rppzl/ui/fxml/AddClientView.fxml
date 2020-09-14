@@ -137,33 +137,33 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="92.0" layoutY="47.0" prefHeight="26.0" prefWidth="149.0" />
-            <Button layoutX="350.0" layoutY="640.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" text="Добавить">
+            <TextField fx:id="middleNameField" layoutX="92.0" layoutY="47.0" prefHeight="26.0" prefWidth="149.0" />
+            <Button fx:id="addButton" layoutX="350.0" layoutY="640.0" mnemonicParsing="false" onAction="#addButtonPressed" prefHeight="30.0" prefWidth="137.0" text="Добавить">
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <TextField layoutX="315.0" layoutY="12.0" />
-            <TextField layoutX="93.0" layoutY="12.0" />
-            <DatePicker layoutX="135.0" layoutY="83.0" prefHeight="26.0" prefWidth="127.0" />
-            <TextField layoutX="133.0" layoutY="119.0" prefHeight="26.0" prefWidth="42.0" />
-            <TextField layoutX="325.0" layoutY="119.0" />
-            <TextField layoutX="101.0" layoutY="155.0" />
-            <DatePicker layoutX="367.0" layoutY="155.0" prefHeight="26.0" prefWidth="127.0" />
-            <TextField layoutX="218.0" layoutY="191.0" />
-            <TextField accessibleRole="MENU" layoutX="152.0" layoutY="226.0" />
-            <TextField layoutX="259.0" layoutY="297.0" />
-            <TextField layoutX="167.0" layoutY="332.0" />
-            <TextField layoutX="177.0" layoutY="367.0" />
-            <TextField layoutX="80.0" layoutY="401.0" />
-            <TextField layoutX="134.0" layoutY="434.0" prefHeight="26.0" prefWidth="127.0" />
-            <TextField layoutX="371.0" layoutY="434.0" prefHeight="26.0" prefWidth="122.0" />
-            <TextField layoutX="320.0" layoutY="602.0" />
-            <CheckBox layoutX="116.0" layoutY="606.0" mnemonicParsing="false" />
-            <ChoiceBox layoutX="256.0" layoutY="263.0" prefWidth="150.0" />
-            <ChoiceBox layoutX="143.0" layoutY="470.0" prefWidth="150.0" />
-            <ChoiceBox layoutX="181.0" layoutY="504.0" prefWidth="150.0" />
-            <ChoiceBox layoutX="123.0" layoutY="538.0" prefWidth="150.0" />
-            <ChoiceBox layoutX="133.0" layoutY="572.0" prefWidth="150.0" />
+            <TextField fx:id="firstNameField" layoutX="315.0" layoutY="12.0" />
+            <TextField fx:id="lastNameField" layoutX="93.0" layoutY="12.0" />
+            <DatePicker fx:id="dateOfBirthField" layoutX="135.0" layoutY="83.0" prefHeight="26.0" prefWidth="127.0" />
+            <TextField fx:id="passportSeriesField" layoutX="133.0" layoutY="119.0" prefHeight="26.0" prefWidth="42.0" />
+            <TextField fx:id="passportNumberField" layoutX="325.0" layoutY="119.0" />
+            <TextField fx:id="authorityField" layoutX="101.0" layoutY="155.0" />
+            <DatePicker fx:id="dateOfIssueField" layoutX="367.0" layoutY="155.0" prefHeight="26.0" prefWidth="127.0" />
+            <TextField fx:id="identificationNumberField" layoutX="218.0" layoutY="191.0" />
+            <TextField fx:id="placeOfBirthField" accessibleRole="MENU" layoutX="152.0" layoutY="226.0" />
+            <TextField fx:id="addressOfResidenceField" layoutX="259.0" layoutY="297.0" />
+            <TextField fx:id="landlinePhoneField" layoutX="167.0" layoutY="332.0" />
+            <TextField fx:id="mobilePhoneField" layoutX="177.0" layoutY="367.0" />
+            <TextField fx:id="emailField" layoutX="80.0" layoutY="401.0" />
+            <TextField fx:id="placeOfWorkField" layoutX="134.0" layoutY="434.0" prefHeight="26.0" prefWidth="127.0" />
+            <TextField fx:id="positionField" layoutX="371.0" layoutY="434.0" prefHeight="26.0" prefWidth="122.0" />
+            <TextField fx:id="monthlyIncomeField" layoutX="320.0" layoutY="602.0" />
+            <CheckBox fx:id="retireeCheckBox" layoutX="116.0" layoutY="606.0" mnemonicParsing="false" />
+            <ChoiceBox fx:id="cityOfResidenceChoiceBox" layoutX="256.0" layoutY="263.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="cityOfRegistrationChoiceBox" layoutX="143.0" layoutY="470.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="familyStatusChoiceBox" layoutX="181.0" layoutY="504.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="citizenshipChoiceBox" layoutX="123.0" layoutY="538.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="disabilityChoiceBox" layoutX="133.0" layoutY="572.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
    </children>

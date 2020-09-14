@@ -1,10 +1,17 @@
 package com.rppzl.ui.controller;
 
+import com.rppzl.dao.CityDAO;
+import com.rppzl.dao.CountryDAO;
+import com.rppzl.dao.DAO;
 import com.rppzl.entity.City;
+import com.rppzl.entity.Client;
 import com.rppzl.entity.Country;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,10 +19,15 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class AddClientViewController {
+public class AddClientViewController implements Initializable {
 
     @FXML private Button backToMenuButton;
+    @FXML private Button addButton;
 
     @FXML private TextField lastNameField;
     @FXML private TextField firstNameField;
@@ -54,5 +66,69 @@ public class AddClientViewController {
         window.setTitle("Главное меню");
         window.setScene(signupViewScene);
         window.show();
+    }
+
+    public void addButtonPressed(ActionEvent event) {
+        Client client = new Client();
+        client.setLastName(lastNameField.getText());
+        client.setFirstName(firstNameField.getText());
+        client.setMiddleName(middleNameField.getText());
+        client.setDateOfBirth(dateOfBirthField.getValue());
+        client.setPassportSeries(passportSeriesField.getText());
+        client.setPassportNumber(passportNumberField.getText());
+        client.setAuthority(authorityField.getText());
+        client.setDateOfIssue(dateOfIssueField.getValue());
+        client.setIdentificationNumber(identificationNumberField.getText());
+        client.setPlaceOfBirth(placeOfBirthField.getText());
+        client.setCityOfResidence(cityOfResidenceChoiceBox.getValue());
+        client.setAddress(addressOfResidenceField.getText());
+        client.setLandlinePhone(landlinePhoneField.getText());
+        client.setMobilePhone(mobilePhoneField.getText());
+        client.setEmail(emailField.getText());
+        client.setPlaceOfWork(placeOfWorkField.getText());
+        client.setPosition(positionField.getText());
+        client.setCityOfRegistration(cityOfRegistrationChoiceBox.getValue());
+        client.setFamilyStatus(familyStatusChoiceBox.getValue());
+        client.setCitizenship(citizenshipChoiceBox.getValue());
+        client.setDisability(disabilityChoiceBox.getValue());
+        client.setRetired(retireeCheckBox.isSelected());
+        client.setMonthlyIncome(new BigDecimal(monthlyIncomeField.getText()));
+
+    }
+
+    public ObservableList<City> getCityObservableList() {
+        DAO<City> dao = new CityDAO();
+        List<City> list = dao.getList();
+        return FXCollections.observableArrayList(list);
+    }
+
+    public ObservableList<Country> getCountryObservableList() {
+        DAO<Country> dao = new CountryDAO();
+        List<Country> list = dao.getList();
+        return FXCollections.observableArrayList(list);
+    }
+
+    private void setFamilyStatusChoiceBoxItems() {
+        familyStatusChoiceBox.getItems().add("Женат/замужем");
+        familyStatusChoiceBox.getItems().add("Не женат/не замужем");
+    }
+
+    private void setDisabilityChoiceBoxItems() {
+        disabilityChoiceBox.getItems().add("Отсутствует");
+        disabilityChoiceBox.getItems().add("I группа");
+        disabilityChoiceBox.getItems().add("II группа");
+        disabilityChoiceBox.getItems().add("III группа");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<City> observableList = getCityObservableList();
+        cityOfResidenceChoiceBox.setItems(observableList);
+        cityOfRegistrationChoiceBox.setItems(observableList);
+        citizenshipChoiceBox.setItems(getCountryObservableList());
+
+        setFamilyStatusChoiceBoxItems();
+        setDisabilityChoiceBoxItems();
+
     }
 }
