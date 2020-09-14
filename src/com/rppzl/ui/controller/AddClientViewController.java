@@ -1,6 +1,7 @@
 package com.rppzl.ui.controller;
 
 import com.rppzl.dao.CityDAO;
+import com.rppzl.dao.ClientDAO;
 import com.rppzl.dao.CountryDAO;
 import com.rppzl.dao.DAO;
 import com.rppzl.entity.City;
@@ -93,6 +94,37 @@ public class AddClientViewController implements Initializable {
         client.setDisability(disabilityChoiceBox.getValue());
         client.setRetired(retireeCheckBox.isSelected());
         client.setMonthlyIncome(new BigDecimal(monthlyIncomeField.getText()));
+
+        // TODO: validate fields
+
+        DAO<Client> dao = new ClientDAO();
+        dao.save(client);
+
+        // TODO: add result label
+
+        lastNameField.clear();
+        firstNameField.clear();
+        middleNameField.clear();
+        dateOfBirthField.getEditor().clear();
+        passportSeriesField.clear();
+        passportNumberField.clear();
+        authorityField.clear();
+        dateOfIssueField.getEditor().clear();
+        identificationNumberField.clear();
+        placeOfBirthField.clear();
+        cityOfResidenceChoiceBox.setValue(null);
+        addressOfResidenceField.clear();
+        landlinePhoneField.clear();
+        mobilePhoneField.clear();
+        emailField.clear();
+        placeOfWorkField.clear();
+        positionField.clear();
+        cityOfRegistrationChoiceBox.setValue(null);
+        familyStatusChoiceBox.setValue(null);
+        citizenshipChoiceBox.setValue(null);
+        disabilityChoiceBox.setValue(null);
+        retireeCheckBox.setSelected(false);
+        monthlyIncomeField.clear();
 
     }
 
