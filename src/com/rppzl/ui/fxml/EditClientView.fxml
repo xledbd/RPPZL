@@ -18,7 +18,7 @@
       </Label>
       <AnchorPane layoutY="62.0" prefHeight="687.0" prefWidth="518.0" style="-fx-background-color: #fafafa;">
          <children>
-            <Button fx:id="backToMenuButton" layoutX="19.0" layoutY="640.0" mnemonicParsing="false" onAction="#changeSceneToMainMenu" text="Вернуться в меню">
+            <Button fx:id="backButton" layoutX="19.0" layoutY="640.0" mnemonicParsing="false" onAction="#changeSceneToPrintClientView" prefHeight="30.0" prefWidth="97.0" text="Назад">
                <font>
                   <Font size="14.0" />
                </font></Button>

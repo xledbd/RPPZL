@@ -32,7 +32,7 @@ import java.util.Set;
 public class EditClientViewController implements Initializable {
     private Client client;
 
-    @FXML private Button backToMenuButton;
+    @FXML private Button backButton;
 
     @FXML private TextField lastNameField;
     @FXML private TextField firstNameField;
@@ -60,10 +60,10 @@ public class EditClientViewController implements Initializable {
 
 
 
-    public void changeSceneToMainMenu(ActionEvent event) throws IOException
+    public void changeSceneToPrintClientView(ActionEvent event) throws IOException
     {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/com/rppzl/ui/fxml/MainMenu.fxml"));
+        loader.setLocation(getClass().getResource("/com/rppzl/ui/fxml/PrintClientView.fxml"));
         Parent signupViewParent = loader.load();
 
         Scene signupViewScene = new Scene(signupViewParent);
