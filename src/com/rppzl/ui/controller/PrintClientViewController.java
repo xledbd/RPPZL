@@ -30,6 +30,7 @@ public class PrintClientViewController implements Initializable {
     @FXML private Button backToMenuButton;
     @FXML private Button editButton;
     @FXML private Button removeButton;
+    @FXML private Button infoButton;
 
     @FXML private TableView<Client> tableView;
     @FXML private TableColumn<Client, String> lastNameColumn;
@@ -75,6 +76,7 @@ public class PrintClientViewController implements Initializable {
 
         editButton.setVisible(false);
         removeButton.setVisible(false);
+        infoButton.setVisible(false);
     }
 
     public void tableRowSelected(MouseEvent event){
@@ -82,6 +84,7 @@ public class PrintClientViewController implements Initializable {
         if(client!=null){
             editButton.setVisible(true);
             removeButton.setVisible(true);
+            infoButton.setVisible(true);
         }
     }
 
@@ -104,6 +107,22 @@ public class PrintClientViewController implements Initializable {
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setTitle("Редактирование клиента");
+        window.setScene(signupViewScene);
+        window.show();
+    }
+
+    public void changeSceneToPrintFullInfo(ActionEvent event) throws IOException
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com/rppzl/ui/fxml/PrintFullInfo.fxml"));
+        Parent parent = loader.load();
+
+        Scene signupViewScene = new Scene(parent);
+        PrintFullInfoController controller = loader.getController();
+        controller.initData(tableView.getSelectionModel().getSelectedItem());
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setTitle("Просмотр клиента");
         window.setScene(signupViewScene);
         window.show();
     }
