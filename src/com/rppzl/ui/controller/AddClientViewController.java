@@ -59,6 +59,8 @@ public class AddClientViewController implements Initializable {
     @FXML private CheckBox retireeCheckBox;
     @FXML private TextField monthlyIncomeField;
 
+    private Set<ConstraintViolation<Client>> constraintViolations;
+
 
     public void changeSceneToMainMenu(ActionEvent event) throws IOException
     {
@@ -81,6 +83,9 @@ public class AddClientViewController implements Initializable {
 
         Scene scene = new Scene(parent);
         Stage popupStage = new Stage();
+
+        ErrorPopupWindowController controller = loader.getController();
+        controller.initData(constraintViolations);
 
         popupStage.initOwner(((Node)event.getSource()).getScene().getWindow());
         popupStage.initModality(Modality.WINDOW_MODAL);
@@ -123,7 +128,7 @@ public class AddClientViewController implements Initializable {
         // TODO: validate fields
 
         Validator validator = ConstraintValidator.getInstance();
-        Set<ConstraintViolation<Client>> constraintViolations = validator.validate(client);
+        constraintViolations = validator.validate(client);
 
         if (constraintViolations.size() != 0) {
             try {
