@@ -18,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import javax.validation.ConstraintViolation;
@@ -72,6 +73,36 @@ public class EditClientViewController implements Initializable {
         window.setTitle("Главное меню");
         window.setScene(signupViewScene);
         window.show();
+    }
+
+    public void showAddCountryView(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("com/rppzl/ui/fxml/AddCountryView.fxml"));
+        Parent parent = loader.load();
+
+        Scene scene = new Scene(parent);
+        Stage popupStage = new Stage();
+
+        popupStage.initOwner(((Node)event.getSource()).getScene().getWindow());
+        popupStage.initModality(Modality.WINDOW_MODAL);
+        popupStage.setScene(scene);
+        popupStage.showAndWait();
+
+    }
+
+    public void showAddCityView(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("com/rppzl/ui/fxml/AddCityView.fxml"));
+        Parent parent = loader.load();
+
+        Scene scene = new Scene(parent);
+        Stage popupStage = new Stage();
+
+        popupStage.initOwner(((Node)event.getSource()).getScene().getWindow());
+        popupStage.initModality(Modality.WINDOW_MODAL);
+        popupStage.setScene(scene);
+        popupStage.showAndWait();
+
     }
 
     public void initData(Client client){
