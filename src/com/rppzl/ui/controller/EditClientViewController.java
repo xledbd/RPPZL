@@ -83,10 +83,20 @@ public class EditClientViewController implements Initializable {
         Scene scene = new Scene(parent);
         Stage popupStage = new Stage();
 
+        AddCountryViewController controller = loader.getController();
+        controller.setStage(popupStage);
+
         popupStage.initOwner(((Node)event.getSource()).getScene().getWindow());
         popupStage.initModality(Modality.WINDOW_MODAL);
         popupStage.setScene(scene);
         popupStage.showAndWait();
+
+        Country c = citizenshipChoiceBox.getValue();
+
+        citizenshipChoiceBox.getItems().clear();
+        citizenshipChoiceBox.setItems(getCountryObservableList());
+
+        citizenshipChoiceBox.setValue(c);
 
     }
 
@@ -98,10 +108,25 @@ public class EditClientViewController implements Initializable {
         Scene scene = new Scene(parent);
         Stage popupStage = new Stage();
 
+        AddCityViewController controller = loader.getController();
+        controller.setStage(popupStage);
+
         popupStage.initOwner(((Node)event.getSource()).getScene().getWindow());
         popupStage.initModality(Modality.WINDOW_MODAL);
         popupStage.setScene(scene);
         popupStage.showAndWait();
+
+        City reg = cityOfRegistrationChoiceBox.getValue();
+        City res = cityOfResidenceChoiceBox.getValue();
+
+        cityOfRegistrationChoiceBox.getItems().clear();
+        cityOfResidenceChoiceBox.getItems().clear();
+
+        cityOfRegistrationChoiceBox.setItems(getCityObservableList());
+        cityOfResidenceChoiceBox.setItems(cityOfRegistrationChoiceBox.getItems());
+
+        cityOfRegistrationChoiceBox.setValue(reg);
+        cityOfResidenceChoiceBox.setValue(res);
 
     }
 
