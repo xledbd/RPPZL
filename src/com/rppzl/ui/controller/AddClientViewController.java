@@ -104,10 +104,16 @@ public class AddClientViewController implements Initializable {
         Scene scene = new Scene(parent);
         Stage popupStage = new Stage();
 
+        AddCountryViewController controller = loader.getController();
+        controller.setStage(popupStage);
+
         popupStage.initOwner(((Node)event.getSource()).getScene().getWindow());
         popupStage.initModality(Modality.WINDOW_MODAL);
         popupStage.setScene(scene);
         popupStage.showAndWait();
+
+        citizenshipChoiceBox.getItems().clear();
+        citizenshipChoiceBox.setItems(getCountryObservableList());
 
     }
 
@@ -119,10 +125,19 @@ public class AddClientViewController implements Initializable {
         Scene scene = new Scene(parent);
         Stage popupStage = new Stage();
 
+        AddCityViewController controller = loader.getController();
+        controller.setStage(popupStage);
+
         popupStage.initOwner(((Node)event.getSource()).getScene().getWindow());
         popupStage.initModality(Modality.WINDOW_MODAL);
         popupStage.setScene(scene);
         popupStage.showAndWait();
+
+        cityOfRegistrationChoiceBox.getItems().clear();
+        cityOfResidenceChoiceBox.getItems().clear();
+
+        cityOfRegistrationChoiceBox.setItems(getCityObservableList());
+        cityOfResidenceChoiceBox.setItems(cityOfRegistrationChoiceBox.getItems());
 
     }
 
