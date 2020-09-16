@@ -29,7 +29,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField />
+                        <TextField fx:id="nameField" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -42,7 +42,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <ChoiceBox prefWidth="150.0" />
+                        <ChoiceBox fx:id="countryChoiceBox" prefWidth="150.0" />
                         <Button mnemonicParsing="false" onAction="#showAddCountryView" text="Добавить страну" />
                      </children>
                      <VBox.margin>
@@ -56,6 +56,6 @@
             </VBox>
          </top>
       </BorderPane>
-      <Button layoutX="380.0" layoutY="232.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="87.0" text="Сохранить" />
+      <Button layoutX="380.0" layoutY="232.0" mnemonicParsing="false" onAction="#saveButtonPressed" prefHeight="26.0" prefWidth="87.0" text="Сохранить" />
    </children>
 </AnchorPane>
