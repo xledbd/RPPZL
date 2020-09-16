@@ -18,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import javax.validation.ConstraintViolation;
@@ -73,6 +74,21 @@ public class AddClientViewController implements Initializable {
         window.show();
     }
 
+    public void showErrorPopupWindow(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("com/rppzl/ui/fxml/ErrorPopupWindow.fxml"));
+        Parent parent = loader.load();
+
+        Scene scene = new Scene(parent);
+        Stage popupStage = new Stage();
+
+        popupStage.initOwner(((Node)event.getSource()).getScene().getWindow());
+        popupStage.initModality(Modality.WINDOW_MODAL);
+        popupStage.setScene(scene);
+        popupStage.showAndWait();
+
+    }
+
     public void addButtonPressed(ActionEvent event) {
         Client client = new Client();
         client.setLastName(lastNameField.getText());
@@ -97,7 +113,12 @@ public class AddClientViewController implements Initializable {
         client.setCitizenship(citizenshipChoiceBox.getValue());
         client.setDisability(disabilityChoiceBox.getValue());
         client.setRetired(retireeCheckBox.isSelected());
-        client.setMonthlyIncome(new BigDecimal(monthlyIncomeField.getText()));
+
+        String monthlyIncome = monthlyIncomeField.getText();
+        if (monthlyIncome != null && !monthlyIncome.isEmpty())
+            client.setMonthlyIncome(new BigDecimal(monthlyIncome));
+        else
+            client.setMonthlyIncome(new BigDecimal(0));
 
         // TODO: validate fields
 
@@ -105,7 +126,16 @@ public class AddClientViewController implements Initializable {
         Set<ConstraintViolation<Client>> constraintViolations = validator.validate(client);
 
         if (constraintViolations.size() != 0) {
+            try {
+                showErrorPopupWindow(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             System.out.println("Validation error");
+            for (ConstraintViolation<Client> c:
+            constraintViolations){
+                System.out.println(c.getMessage());
+            }
         }
         else {
             DAO<Client> dao = new ClientDAO();
