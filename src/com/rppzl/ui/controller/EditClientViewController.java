@@ -59,7 +59,7 @@ public class EditClientViewController implements Initializable {
     @FXML private CheckBox retireeCheckBox;
     @FXML private TextField monthlyIncomeField;
 
-
+    private Set<ConstraintViolation<Client>> constraintViolations;
 
     public void changeSceneToPrintClientView(ActionEvent event) throws IOException
     {
@@ -73,6 +73,24 @@ public class EditClientViewController implements Initializable {
         window.setTitle("Главное меню");
         window.setScene(signupViewScene);
         window.show();
+    }
+
+    public void showErrorPopupWindow(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("com/rppzl/ui/fxml/ErrorPopupWindow.fxml"));
+        Parent parent = loader.load();
+
+        Scene scene = new Scene(parent);
+        Stage popupStage = new Stage();
+
+        ErrorPopupWindowController controller = loader.getController();
+        controller.initData(constraintViolations);
+
+        popupStage.initOwner(((Node)event.getSource()).getScene().getWindow());
+        popupStage.initModality(Modality.WINDOW_MODAL);
+        popupStage.setScene(scene);
+        popupStage.showAndWait();
+
     }
 
     public void showAddCountryView(ActionEvent event) throws IOException {
@@ -182,15 +200,29 @@ public class EditClientViewController implements Initializable {
         client.setCitizenship(citizenshipChoiceBox.getValue());
         client.setDisability(disabilityChoiceBox.getValue());
         client.setRetired(retireeCheckBox.isSelected());
-        client.setMonthlyIncome(new BigDecimal(monthlyIncomeField.getText()));
+
+        String monthlyIncome = monthlyIncomeField.getText();
+        if (monthlyIncome != null && !monthlyIncome.isEmpty())
+            client.setMonthlyIncome(new BigDecimal(monthlyIncome));
+        else
+            client.setMonthlyIncome(new BigDecimal(0));
 
         // TODO: validate fields
 
         Validator validator = ConstraintValidator.getInstance();
-        Set<ConstraintViolation<Client>> constraintViolations = validator.validate(client);
+        constraintViolations = validator.validate(client);
 
         if (constraintViolations.size() != 0) {
+            try {
+                showErrorPopupWindow(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             System.out.println("Validation error");
+            for (ConstraintViolation<Client> c:
+                    constraintViolations){
+                System.out.println(c.getMessage());
+            }
         }
         else {
             DAO<Client> dao = new ClientDAO();
