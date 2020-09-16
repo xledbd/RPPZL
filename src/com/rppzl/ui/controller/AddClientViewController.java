@@ -73,6 +73,8 @@ public class AddClientViewController implements Initializable {
         window.show();
     }
 
+
+
     public void addButtonPressed(ActionEvent event) {
         Client client = new Client();
         client.setLastName(lastNameField.getText());

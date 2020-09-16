@@ -164,6 +164,9 @@
             <ChoiceBox fx:id="disabilityChoiceBox" layoutX="133.0" layoutY="572.0" prefWidth="150.0" />
             <CheckBox fx:id="retireeCheckBox" layoutX="116.0" layoutY="606.0" mnemonicParsing="false" />
             <TextField fx:id="monthlyIncomeField" layoutX="320.0" layoutY="602.0" />
+            <Button layoutX="410.0" layoutY="263.0" mnemonicParsing="false" text="Добавить город" />
+            <Button layoutX="303.0" layoutY="470.0" mnemonicParsing="false" text="Добавить город" />
+            <Button layoutX="286.0" layoutY="538.0" mnemonicParsing="false" text="Добавить страну" />
          </children>
       </AnchorPane>
    </children>
