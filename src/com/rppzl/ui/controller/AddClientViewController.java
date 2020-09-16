@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.hibernate.JDBCException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
@@ -94,6 +95,28 @@ public class AddClientViewController implements Initializable {
         popupStage.setScene(scene);
         popupStage.showAndWait();
 
+    }
+
+    public void showAddClientErrorPopupWindow(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("com/rppzl/ui/fxml/AddClientErrorPopupWindow.fxml"));
+        try {
+            Parent parent = loader.load();
+
+        Scene scene = new Scene(parent);
+        Stage popupStage = new Stage();
+
+        AddClientErrorPopupWindowController controller = loader.getController();
+        controller.setStage(popupStage);
+
+        popupStage.initOwner(((Node)event.getSource()).getScene().getWindow());
+        popupStage.initModality(Modality.WINDOW_MODAL);
+        popupStage.setScene(scene);
+        popupStage.showAndWait();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void showAddCountryView(ActionEvent event) throws IOException {
@@ -172,8 +195,6 @@ public class AddClientViewController implements Initializable {
         else
             client.setMonthlyIncome(new BigDecimal(0));
 
-        // TODO: validate fields
-
         Validator validator = ConstraintValidator.getInstance();
         constraintViolations = validator.validate(client);
 
@@ -191,33 +212,35 @@ public class AddClientViewController implements Initializable {
         }
         else {
             DAO<Client> dao = new ClientDAO();
-            dao.save(client);
-            // TODO: add result label
-
-            lastNameField.clear();
-            firstNameField.clear();
-            middleNameField.clear();
-            dateOfBirthField.getEditor().clear();
-            passportSeriesField.clear();
-            passportNumberField.clear();
-            authorityField.clear();
-            dateOfIssueField.getEditor().clear();
-            identificationNumberField.clear();
-            placeOfBirthField.clear();
-            cityOfResidenceChoiceBox.setValue(null);
-            addressOfResidenceField.clear();
-            landlinePhoneField.clear();
-            mobilePhoneField.clear();
-            emailField.clear();
-            placeOfWorkField.clear();
-            positionField.clear();
-            cityOfRegistrationChoiceBox.setValue(null);
-            familyStatusChoiceBox.setValue(null);
-            citizenshipChoiceBox.setValue(null);
-            disabilityChoiceBox.setValue(null);
-            retireeCheckBox.setSelected(false);
-            monthlyIncomeField.clear();
-
+            try {
+                dao.save(client);
+                lastNameField.clear();
+                firstNameField.clear();
+                middleNameField.clear();
+                dateOfBirthField.getEditor().clear();
+                passportSeriesField.clear();
+                passportNumberField.clear();
+                authorityField.clear();
+                dateOfIssueField.getEditor().clear();
+                identificationNumberField.clear();
+                placeOfBirthField.clear();
+                cityOfResidenceChoiceBox.setValue(null);
+                addressOfResidenceField.clear();
+                landlinePhoneField.clear();
+                mobilePhoneField.clear();
+                emailField.clear();
+                placeOfWorkField.clear();
+                positionField.clear();
+                cityOfRegistrationChoiceBox.setValue(null);
+                familyStatusChoiceBox.setValue(null);
+                citizenshipChoiceBox.setValue(null);
+                disabilityChoiceBox.setValue(null);
+                retireeCheckBox.setSelected(false);
+                monthlyIncomeField.clear();
+            } catch (JDBCException e) {
+                System.out.println(e.getSQLException().getMessage());
+                showAddClientErrorPopupWindow(event);
+            }
         }
     }
 
