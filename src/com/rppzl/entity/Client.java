@@ -1,8 +1,9 @@
 package com.rppzl.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "client")
@@ -13,78 +14,125 @@ public class Client {
 	@Column(name = "client_id")
 	private int id;
 
+	@NotNull
+	@Pattern(regexp = "^[A-Za-zа-яА-я-]{1,45}$",
+			message = "Поле \"Фамилия\" может содержать только символы А-Я, а-я, A-Z, a-z, -")
 	@Column(name = "lastname")
 	private String lastName;
 
+	@NotNull
+	@Pattern(regexp = "^[A-Za-zа-яА-я-]{1,45}$",
+			message = "Поле \"Имя\" может содержать только символы А-Я, а-я, A-Z, a-z, -")
 	@Column(name = "name")
 	private String firstName;
 
+	@NotNull
+	@Pattern(regexp = "^[A-Za-zа-яА-я-]{1,45}$",
+			message = "Поле \"Отчество\" может содержать только символы А-Я, а-я, A-Z, a-z, -")
 	@Column(name = "middle_name")
 	private String middleName;
 
+	@NotNull(message = "Поле \"Дата рождения\" является обязательным")
+	@Past(message = "Поле \"Дата рождения\" содержит неверное значение")
 	@Column(name = "date")
-	private Date dateOfBirth;
+	private LocalDate dateOfBirth;
 
+	@NotNull
+	@Pattern(regexp = "^[ABHKMPSD][BMHPC]$",
+			message = "Поле \"Серия паспорта\" может содержать только 2 прописные буквы латинского алфавита")
 	@Column(name = "passport_series")
 	private String passportSeries;
 
+	@NotNull
+	@Pattern(regexp = "^[0-9]{3} [0-9]{2} [0-9]{2}$",
+			message = "Поле \"Номер паспорта\" должно содержать 7 цифр")
 	@Column(name = "passport_number")
 	private String passportNumber;
 
+	@NotNull
+	@Pattern(regexp = "^[А-ЯA-Z -]{1,45}$",
+			message = "Поле \"Кем выдан\" может содержать только символы А-Я, A-Z, -")
 	@Column(name = "authority")
 	private String authority;
 
+	@NotNull(message = "Поле \"Дата выдачи\" является обязательным")
+	@Past(message = "Поле \"Дата выдачи\" содержит неверное значение")
 	@Column(name = "date_of_issue")
-	private Date dateOfIssue;
+	private LocalDate dateOfIssue;
 
+	@NotNull
+	@Pattern(regexp = "^[0-9]{7}[A-Z][0-9]{4}PB[1-7]$",
+			message = "Поле \"Идентификационный номер\" должно содержать значение вида 0000000A0000PB0")
 	@Column(name = "identification_number")
 	private String identificationNumber;
 
+	@NotNull
+	@Pattern(regexp = "^[A-Za-zа-яА-я- ]{1,45}$",
+			message = "Поле \"Место рождения\" может содержать только символы А-Я, а-я, A-Z, a-z, -")
 	@Column(name = "place_of_birth")
 	private String placeOfBirth;
 
+	@NotNull(message = "Поле \"Город фактического проживания\" является обязательным")
 	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
 			CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name = "city_of_residence_id")
 	private City cityOfResidence;
 
+	@NotNull
+	@Pattern(regexp = "^[A-Za-zа-яА-я0-9 /,.-]{1,45}$",
+			message = "Поле \"Адрес фактического проживания\" может содержать только символы А-Я, а-я, A-Z, a-z, 0-9, .,/-")
 	@Column(name = "adress_of_residence")
 	private String address;
 
+	@Pattern(regexp = "^([0-9]{3}-[0-9]{2}-[0-9]{2})?$",
+			message = "Поле \"Домашний телефон\" может быть пустым или содержать только номер в формате 000-00-00")
 	@Column(name = "lendline_phone")
 	private String landlinePhone;
 
+	@Pattern(regexp = "^(\\+[0-9]{3} \\([0-9]{2}\\) [0-9]{3}-[0-9]{2}-[0-9]{2})?$",
+			message = "Поле \"Мобильный телефон\" может быть пустым или содержать номер в формате +000 (00) 000-00-00")
 	@Column(name = "mobile_phone")
 	private String mobilePhone;
 
+	@Email(message = "Поле \"E-mail\" может быть пустым или содержать адрес эл. почты, например yourmail@example.ex")
 	@Column(name = "Email")
 	private String email;
 
+	@Pattern(regexp = "^([A-Za-zа-яА-я0-9 /,.-]{1,45})?$",
+			message = "Поле \"Место работы\" может быть пустым или содержать только символы А-Я, а-я, A-Z, a-z, 0-9, .,/-")
 	@Column(name = "place_of_work")
 	private String placeOfWork;
 
+	@Pattern(regexp = "^([A-Za-zа-яА-я /,.-]{1,45})?$",
+			message = "Поле \"Должность\" может быть пустым или содержать только символы А-Я, а-я, A-Z, a-z, 0-9, .,/-")
 	@Column(name = "position")
 	private String position;
 
+	@NotNull(message = "Поле \"Город прописки\" является обязательным")
 	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
 			CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name = "city_of_registration_id")
 	private City cityOfRegistration;
 
+	@NotNull(message = "Поле \"Семейное положение\" является обязательным")
 	@Column(name = "family_status")
 	private String familyStatus;
 
+	@NotNull(message = "Поле \"Гражданство\" является обязательным")
 	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
 			CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name = "citizenship_id")
 	private Country citizenship;
 
+	@NotNull(message = "Поле \"Инвалидность\" является обязательным")
 	@Column(name = "disability")
 	private String disability;
 
 	@Column(name = "retiree")
 	private boolean retired;
 
+	@DecimalMin(value = "0.0",
+				message = "Поле \"Ежемесячный доход\" не может иметь отрицательное значение")
 	@Column(name = "monthly_income")
 	private BigDecimal monthlyIncome;
 
@@ -120,11 +168,11 @@ public class Client {
 		this.middleName = middleName;
 	}
 
-	public Date getDateOfBirth() {
+	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
@@ -152,11 +200,11 @@ public class Client {
 		this.authority = authority;
 	}
 
-	public Date getDateOfIssue() {
+	public LocalDate getDateOfIssue() {
 		return dateOfIssue;
 	}
 
-	public void setDateOfIssue(Date dateOfIssue) {
+	public void setDateOfIssue(LocalDate dateOfIssue) {
 		this.dateOfIssue = dateOfIssue;
 	}
 

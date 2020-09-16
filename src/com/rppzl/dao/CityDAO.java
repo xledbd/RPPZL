@@ -19,7 +19,8 @@ public class CityDAO implements DAO<City> {
 		try {
 			session.beginTransaction();
 
-			Query<City> query = session.createQuery("from City c join fetch c.country order by c.name", City.class);
+			Query<City> query = session.createQuery("from City c" +
+					" join fetch c.country co order by co.country, c.name", City.class);
 			list = query.getResultList();
 
 			session.getTransaction().commit();

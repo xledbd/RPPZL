@@ -1,5 +1,6 @@
 package com.rppzl;
 
+import com.rppzl.db.SessionFactorySingleton;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,6 +10,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
 	public static void main(String[] args) {
+		SessionFactorySingleton.getInstance();
 		launch(args);
 	}
 

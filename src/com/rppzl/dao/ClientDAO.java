@@ -2,6 +2,7 @@ package com.rppzl.dao;
 
 import com.rppzl.db.SessionFactorySingleton;
 import com.rppzl.entity.Client;
+import org.hibernate.JDBCException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -34,7 +35,7 @@ public class ClientDAO implements DAO<Client> {
 	}
 
 	@Override
-	public void save(Client object) {
+	public void save(Client object) throws JDBCException {
 		Session session = factory.getCurrentSession();
 		try {
 			session.beginTransaction();
