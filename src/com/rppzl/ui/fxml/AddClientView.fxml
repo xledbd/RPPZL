@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<?import com.rppzl.ui.MaskField?>
+<AnchorPane prefHeight="750.0" prefWidth="350.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rppzl.ui.controller.AddClientViewController">
+   <children>
+      <Label layoutX="92.0" text="Добавление клиента" textFill="#e26565">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutY="63.0" prefHeight="687.0" prefWidth="518.0" style="-fx-background-color: #fafafa;">
+         <children>
+            <Button fx:id="backToMenuButton" layoutX="19.0" layoutY="640.0" mnemonicParsing="false" onAction="#changeSceneToMainMenu" text="Вернуться в меню">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Label layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="110.0" text="1. Фамилия*">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="259.0" layoutY="15.0" prefHeight="20.0" prefWidth="59.0" text="2. Имя*">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="50.0" prefHeight="20.0" prefWidth="94.0" text="3. Отчество*">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="86.0" prefHeight="20.0" prefWidth="127.0" text="4. Дата рождения*">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="122.0" prefHeight="20.0" prefWidth="127.0" text="5. Серия паспорта*">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="190.0" layoutY="122.0" prefHeight="20.0" prefWidth="137.0" text="6. Номер паспорта*">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="158.0" prefHeight="20.0" prefWidth="94.0" text="7. Кем выдан*">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="263.0" layoutY="158.0" prefHeight="20.0" prefWidth="110.0" text="8. Дата выдачи*">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="193.0" prefHeight="20.0" prefWidth="217.0" text="9. Идентификационный номер*">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="228.0" prefHeight="20.0" prefWidth="149.0" text="10. Место рождения*">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="265.0" prefHeight="20.0" prefWidth="246.0" text="11. Город фактического проживания*">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="299.0" prefHeight="20.0" prefWidth="253.0" text="12. Адрес фактического проживания*">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="335.0" text="13. Домашний телефон">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="370.0" text="14. Мобильный телефон">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="404.0" prefHeight="20.0" prefWidth="69.0" text="15. E-mail">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="437.0" text="16. Место работы">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="269.0" layoutY="437.0" text="17. Должность">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="472.0" prefHeight="20.0" prefWidth="137.0" text="18. Город прописки*">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="506.0" prefHeight="20.0" prefWidth="178.0" text="19. Семейное положение*">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="540.0" prefHeight="20.0" prefWidth="114.0" text="20. Гражданство*">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="574.0" prefHeight="20.0" prefWidth="127.0" text="21. Инвалидность*">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="604.0" prefHeight="20.0" prefWidth="110.0" text="22. Пенсионер*">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="157.0" layoutY="604.0" text="23. Ежемесячный доход">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="addButton" layoutX="350.0" layoutY="640.0" mnemonicParsing="false" onAction="#addButtonPressed" prefHeight="30.0" prefWidth="137.0" text="Добавить">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <TextField fx:id="lastNameField" layoutX="93.0" layoutY="12.0" />
+            <TextField fx:id="firstNameField" layoutX="315.0" layoutY="12.0" />
+            <TextField fx:id="middleNameField" layoutX="92.0" layoutY="47.0" prefHeight="26.0" prefWidth="149.0" />
+            <DatePicker fx:id="dateOfBirthField" layoutX="135.0" layoutY="83.0" prefHeight="26.0" prefWidth="127.0" />
+            <MaskField fx:id="passportSeriesField" layoutX="139.0" layoutY="119.0" prefHeight="26.0" prefWidth="42.0" mask="AA" />
+            <MaskField fx:id="passportNumberField" layoutX="325.0" layoutY="119.0" mask="DDD DD DD" />
+            <TextField fx:id="authorityField" layoutX="107.0" layoutY="156.0" />
+            <DatePicker fx:id="dateOfIssueField" layoutX="373.0" layoutY="155.0" prefHeight="26.0" prefWidth="127.0" />
+            <TextField fx:id="identificationNumberField" layoutX="218.0" layoutY="191.0" />
+            <TextField fx:id="placeOfBirthField" accessibleRole="MENU" layoutX="152.0" layoutY="226.0" />
+            <ChoiceBox fx:id="cityOfResidenceChoiceBox" layoutX="259.0" layoutY="263.0" prefWidth="150.0" />
+            <TextField fx:id="addressOfResidenceField" layoutX="259.0" layoutY="297.0" />
+            <MaskField fx:id="landlinePhoneField" layoutX="167.0" layoutY="332.0" mask="DDD-DD-DD" />
+            <MaskField fx:id="mobilePhoneField" layoutX="177.0" layoutY="367.0" mask="+DDD (DD) DDD-DD-DD" />
+            <TextField fx:id="emailField" layoutX="80.0" layoutY="401.0" />
+            <TextField fx:id="placeOfWorkField" layoutX="134.0" layoutY="434.0" prefHeight="26.0" prefWidth="127.0" />
+            <TextField fx:id="positionField" layoutX="371.0" layoutY="434.0" prefHeight="26.0" prefWidth="122.0" />
+            <ChoiceBox fx:id="cityOfRegistrationChoiceBox" layoutX="154.0" layoutY="470.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="familyStatusChoiceBox" layoutX="188.0" layoutY="504.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="citizenshipChoiceBox" layoutX="133.0" layoutY="538.0" prefHeight="26.0" prefWidth="178.0" />
+            <ChoiceBox fx:id="disabilityChoiceBox" layoutX="133.0" layoutY="572.0" prefWidth="150.0" />
+            <CheckBox fx:id="retireeCheckBox" layoutX="116.0" layoutY="606.0" mnemonicParsing="false" />
+            <TextField fx:id="monthlyIncomeField" layoutX="320.0" layoutY="602.0" />
+            <Button fx:id="addCityButton1" layoutX="412.0" layoutY="263.0" mnemonicParsing="false" onAction="#showAddCityView" prefHeight="26.0" prefWidth="105.0" text="Добавить город" />
+            <Button fx:id="addCityButton2" layoutX="313.0" layoutY="470.0" mnemonicParsing="false" onAction="#showAddCityView" text="Добавить город" />
+            <Button fx:id="addCountryButton" layoutX="318.0" layoutY="538.0" mnemonicParsing="false" onAction="#showAddCountryView" text="Добавить страну" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

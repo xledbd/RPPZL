@@ -1,11 +1,14 @@
 # Compiled class file
 *.class
-
+RPPZL.iml
 # Log file
 *.log
 
 # BlueJ files
 *.ctxt
+
+#lib folder
+lib/*
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
