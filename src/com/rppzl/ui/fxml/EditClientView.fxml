@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import com.rppzl.ui.MaskField?>
 <AnchorPane prefHeight="750.0" prefWidth="350.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rppzl.ui.controller.EditClientViewController">
    <children>
       <Label layoutX="59.0" text="Редактирование клиента" textFill="#e26565">
@@ -145,16 +146,16 @@
             <TextField fx:id="firstNameField" layoutX="315.0" layoutY="12.0" />
             <TextField fx:id="middleNameField" layoutX="94.0" layoutY="47.0" prefHeight="26.0" prefWidth="149.0" />
             <DatePicker fx:id="dateOfBirthField" layoutX="137.0" layoutY="83.0" prefHeight="26.0" prefWidth="127.0" />
-            <TextField fx:id="passportSeriesField" layoutX="138.0" layoutY="119.0" prefHeight="26.0" prefWidth="42.0" />
-            <TextField fx:id="passportNumberField" layoutX="325.0" layoutY="119.0" />
+            <MaskField fx:id="passportSeriesField" layoutX="138.0" layoutY="119.0" prefHeight="26.0" prefWidth="42.0" mask="AA" />
+            <MaskField fx:id="passportNumberField" layoutX="325.0" layoutY="119.0" mask="DDD DD DD" />
             <TextField fx:id="authorityField" layoutX="105.0" layoutY="155.0" />
             <DatePicker fx:id="dateOfIssueField" layoutX="367.0" layoutY="155.0" prefHeight="26.0" prefWidth="127.0" />
             <TextField fx:id="identificationNumberField" layoutX="220.0" layoutY="191.0" />
             <TextField fx:id="placeOfBirthField" accessibleRole="MENU" layoutX="152.0" layoutY="226.0" />
             <ChoiceBox fx:id="cityOfResidenceChoiceBox" layoutX="256.0" layoutY="263.0" prefWidth="150.0" />
             <TextField fx:id="addressOfResidenceField" layoutX="261.0" layoutY="297.0" />
-            <TextField fx:id="landlinePhoneField" layoutX="167.0" layoutY="332.0" />
-            <TextField fx:id="mobilePhoneField" layoutX="177.0" layoutY="367.0" />
+            <MaskField fx:id="landlinePhoneField" layoutX="167.0" layoutY="332.0" mask="DDD-DD-DD" />
+            <MaskField fx:id="mobilePhoneField" layoutX="177.0" layoutY="367.0" mask="+DDD (DD) DDD-DD-DD" />
             <TextField fx:id="emailField" layoutX="80.0" layoutY="401.0" />
             <TextField fx:id="placeOfWorkField" layoutX="134.0" layoutY="434.0" prefHeight="26.0" prefWidth="127.0" />
             <TextField fx:id="positionField" layoutX="371.0" layoutY="434.0" prefHeight="26.0" prefWidth="122.0" />

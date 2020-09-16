@@ -255,5 +255,8 @@ public class AddClientViewController implements Initializable {
         setFamilyStatusChoiceBoxItems();
         setDisabilityChoiceBoxItems();
 
+        landlinePhoneField.clear();
+        mobilePhoneField.clear();
+
     }
 }

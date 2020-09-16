@@ -44,7 +44,7 @@ public class Client {
 	private String passportSeries;
 
 	@NotNull
-	@Pattern(regexp = "^[0-9]{7}$",
+	@Pattern(regexp = "^[0-9]{3} [0-9]{2} [0-9]{2}$",
 			message = "Поле \"Номер паспорта\" должно содержать 7 цифр")
 	@Column(name = "passport_number")
 	private String passportNumber;
@@ -89,8 +89,8 @@ public class Client {
 	@Column(name = "lendline_phone")
 	private String landlinePhone;
 
-	@Pattern(regexp = "^(\\+[0-9]{11,12})?$",
-			message = "Поле \"Мобильный телефон\" может быть пустым или содержать только номер в формате +123456789000")
+	@Pattern(regexp = "^(\\+[0-9]{3} \\([0-9]{2}\\) [0-9]{3}-[0-9]{2}-[0-9]{2})?$",
+			message = "Поле \"Мобильный телефон\" может быть пустым или содержать номер в формате +000 (00) 000-00-00")
 	@Column(name = "mobile_phone")
 	private String mobilePhone;
 
