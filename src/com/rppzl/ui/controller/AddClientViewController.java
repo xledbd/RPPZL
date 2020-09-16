@@ -34,6 +34,8 @@ public class AddClientViewController implements Initializable {
 
     @FXML private Button backToMenuButton;
     @FXML private Button addButton;
+    @FXML private Button addCountryButton;
+    @FXML private Button addCityButton;
 
     @FXML private TextField lastNameField;
     @FXML private TextField firstNameField;
@@ -86,6 +88,36 @@ public class AddClientViewController implements Initializable {
 
         ErrorPopupWindowController controller = loader.getController();
         controller.initData(constraintViolations);
+
+        popupStage.initOwner(((Node)event.getSource()).getScene().getWindow());
+        popupStage.initModality(Modality.WINDOW_MODAL);
+        popupStage.setScene(scene);
+        popupStage.showAndWait();
+
+    }
+
+    public void showAddCountryView(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("com/rppzl/ui/fxml/AddCountryView.fxml"));
+        Parent parent = loader.load();
+
+        Scene scene = new Scene(parent);
+        Stage popupStage = new Stage();
+
+        popupStage.initOwner(((Node)event.getSource()).getScene().getWindow());
+        popupStage.initModality(Modality.WINDOW_MODAL);
+        popupStage.setScene(scene);
+        popupStage.showAndWait();
+
+    }
+
+    public void showAddCityView(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("com/rppzl/ui/fxml/AddCityView.fxml"));
+        Parent parent = loader.load();
+
+        Scene scene = new Scene(parent);
+        Stage popupStage = new Stage();
 
         popupStage.initOwner(((Node)event.getSource()).getScene().getWindow());
         popupStage.initModality(Modality.WINDOW_MODAL);
