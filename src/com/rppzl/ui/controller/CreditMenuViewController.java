@@ -1,6 +1,10 @@
 package com.rppzl.ui.controller;
 
 
+import com.rppzl.dao.CreditProductDAO;
+import com.rppzl.dao.DepositProductDAO;
+import com.rppzl.entity.CreditProduct;
+import com.rppzl.entity.DepositProduct;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,20 +30,18 @@ import java.util.ResourceBundle;
 
 public class CreditMenuViewController implements Initializable {
 
-       /* @FXML private TableView<Service> tableView;
-        @FXML private TableColumn<Service, String> nameColumn;
-        @FXML private TableColumn<Service, String> priceColumn;*/
+    @FXML private TableView<CreditProduct> tableView;
+    @FXML private TableColumn<CreditProduct, String> nameColumn;
+    @FXML private TableColumn<CreditProduct, String> rateColumn;
 
-        @FXML private TextField nameField;
-        @FXML private TextField priceField;
-        @FXML private TextArea descriptionField;
-        @FXML private Label addLabel;
+    @FXML private TextField nameField;
+    @FXML private TextField rateField;
+    @FXML private Label addLabel;
 
-        @FXML private VBox editVBox;
-        @FXML private TextField nameFieldEdit;
-        @FXML private TextField priceFieldEdit;
-        @FXML private TextArea descriptionFieldEdit;
-        @FXML private Label editLabel;
+    @FXML private VBox editVBox;
+    @FXML private TextField nameFieldEdit;
+    @FXML private TextField rateFieldEdit;
+    @FXML private Label editLabel;
 
     public void changeSceneToMainMenu(ActionEvent event) throws IOException
     {
@@ -55,108 +57,77 @@ public class CreditMenuViewController implements Initializable {
         window.show();
     }
 
-        public void addButtonPressed(ActionEvent event) throws Exception {
-            /*String name = nameField.getText();
-            double price = Double.parseDouble(priceField.getText());
-            String description = descriptionField.getText();
-            if (!name.isEmpty()) {
-                Service service = new Service(name, price);
-                service.setDescription(description);
-                App.outputStream.writeObject("add_service");
-                App.outputStream.writeObject(service);
-                String b = (String) App.inputStream.readObject();
-                if (b.equals("true")) {
-                    addLabel.setText("Услуга добавлена");
-                    addLabel.setTextFill(Color.GREEN);
-                    tableView.setItems(getServiceObservableList());
-                } else {
-                    addLabel.setText("Ошибка при добавлени блюда");
-                    addLabel.setTextFill(Color.RED);
-                }
-                addLabel.setVisible(true);
-            }
-            nameField.clear();
-            priceField.clear();
-            descriptionField.clear();*/
-        }
-
-        public void tableRowSelected(MouseEvent event) {
-           /* Service service = tableView.getSelectionModel().getSelectedItem();
-            if (service != null) {
-                editVBox.setVisible(true);
-                editLabel.setVisible(false);
-                nameFieldEdit.setText(service.getName());
-                priceFieldEdit.setText(Double.toString(service.getPrice()));
-                descriptionFieldEdit.setText(service.getDescription());
-            }*/
-        }
-
-        public void editButtonPressed(ActionEvent event) throws Exception {
-           /* Service service = tableView.getSelectionModel().getSelectedItem();
-            String name = nameFieldEdit.getText();
-            double price = Double.parseDouble(priceFieldEdit.getText());
-            String desc = descriptionFieldEdit.getText();
-            if (!name.isEmpty()) {
-                Service send = new Service(name, price);
-                send.setDescription(desc);
-                send.setId(service.getId());
-                App.outputStream.writeObject("edit_service");
-                App.outputStream.writeObject(send);
-                String b = (String) App.inputStream.readObject();
-                if (b.equals("true"))
-                {
-                    tableView.setItems(getServiceObservableList());
-                    editLabel.setText("Изменения сохранены");
-                    editLabel.setTextFill(Color.GREEN);
-                }
-                else
-                {
-                    editLabel.setText("Ошибка при сохранении изменений");
-                    editLabel.setTextFill(Color.RED);
-                }
-                editLabel.setVisible(true);
-            }*/
-        }
-
-        public void removeButtonPressed(ActionEvent event) throws Exception {
-            /*Service service = tableView.getSelectionModel().getSelectedItem();
-            App.outputStream.writeObject("remove_service");
-            App.outputStream.writeObject(service.getId());
-            String b = (String) App.inputStream.readObject();
-            if (b.equals("true")) {
-                tableView.setItems(getServiceObservableList());
-                editLabel.setText("Запись удалена");
-                editLabel.setTextFill(Color.GREEN);
-            }
-            else {
-                editLabel.setText("Ошибка при удалении записи");
-                editLabel.setTextFill(Color.RED);
-            }
-            editLabel.setVisible(true);*/
-        }
-
-
-
-        /*public static ObservableList<Service> getServiceObservableList() {
-           *//* List<Service> list = null;
-            try {
-                App.outputStream.writeObject("get_services");
-                list = (List<Service>) App.inputStream.readObject();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return FXCollections.observableArrayList(list);*//*
-        }*/
-
-        @Override
-        public void initialize(URL location, ResourceBundle resources) {
-           /* nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-            priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-
+    public void addButtonPressed(ActionEvent event) throws Exception {
+        String name = nameField.getText();
+        double rate = Double.parseDouble(rateField.getText());
+        if (!name.isEmpty()) {
+            CreditProduct product = new CreditProduct();
+            product.setId(new CreditProductDAO().getList().size() + 1);
+            product.setName(name);
+            product.setInterestRate(rate);
+            new CreditProductDAO().save(product);
+            addLabel.setText("Услуга добавлена");
+            addLabel.setTextFill(Color.GREEN);
             tableView.setItems(getServiceObservableList());
 
-            tableView.getSortOrder().add(nameColumn);
-
-            editVBox.setVisible(false);*/
+            addLabel.setVisible(true);
         }
+        nameField.clear();
+        rateField.clear();
+    }
+
+    public void tableRowSelected(MouseEvent event) {
+        CreditProduct product = tableView.getSelectionModel().getSelectedItem();
+        if (product != null) {
+            editVBox.setVisible(true);
+            editLabel.setVisible(false);
+            nameFieldEdit.setText(product.getName());
+            rateFieldEdit.setText(Double.toString(product.getInterestRate()));
+        }
+    }
+
+    public void editButtonPressed(ActionEvent event) throws Exception {
+        CreditProduct product = tableView.getSelectionModel().getSelectedItem();
+        String name = nameFieldEdit.getText();
+        double rate = Double.parseDouble(rateFieldEdit.getText());
+        if (!name.isEmpty()) {
+            CreditProduct send = new CreditProduct();
+            send.setName(name);
+            send.setInterestRate(rate);
+            send.setId(product.getId());
+            new CreditProductDAO().save(send);
+            tableView.setItems(getServiceObservableList());
+            editLabel.setText("Изменения сохранены");
+            editLabel.setTextFill(Color.GREEN);
+            editLabel.setVisible(true);
+        }
+    }
+
+    public void removeButtonPressed(ActionEvent event) throws Exception {
+        CreditProduct product = tableView.getSelectionModel().getSelectedItem();
+        new CreditProductDAO().delete(product.getId());
+        tableView.setItems(getServiceObservableList());
+        editLabel.setText("Запись удалена");
+        editLabel.setTextFill(Color.GREEN);
+
+        editLabel.setVisible(true);
+    }
+
+
+
+    public static ObservableList<CreditProduct> getServiceObservableList() {
+        return FXCollections.observableArrayList(new CreditProductDAO().getList());
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        rateColumn.setCellValueFactory(new PropertyValueFactory<>("interestRate"));
+
+        tableView.setItems(getServiceObservableList());
+
+        tableView.getSortOrder().add(nameColumn);
+
+        editVBox.setVisible(false);
+    }
     }
