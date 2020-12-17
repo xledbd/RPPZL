@@ -51,13 +51,13 @@ public class AccountViewController implements Initializable {
     public void changeSceneToPrintOpenAccountView(ActionEvent event) throws IOException
     {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/com/rppzl/ui/fxml/PrintOpenAccountView.fxml"));
+        loader.setLocation(getClass().getResource("/com/rppzl/ui/fxml/PrintOpenAccountsView.fxml"));
         Parent signupViewParent = loader.load();
 
         Scene signupViewScene = new Scene(signupViewParent);
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setTitle("Добавление кредита");
+        window.setTitle("Просмотр открытых счетов");
         window.setScene(signupViewScene);
         window.show();
     }
