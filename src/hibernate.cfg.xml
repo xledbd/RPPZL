@@ -28,7 +28,8 @@
         <mapping class="com.rppzl.entity.Country" />
         <mapping class="com.rppzl.entity.City" />
         <mapping class="com.rppzl.entity.Client" />
-
+        <mapping class="com.rppzl.entity.DepositProduct" />
+        <mapping class="com.rppzl.entity.CreditProduct" />
 
     </session-factory>
 
