@@ -62,7 +62,7 @@ public class CreditMenuViewController implements Initializable {
         double rate = Double.parseDouble(rateField.getText());
         if (!name.isEmpty()) {
             CreditProduct product = new CreditProduct();
-            product.setId(new DepositProductDAO().getList().size() + 1);
+            product.setId(new CreditProductDAO().getList().size() + 1);
             product.setName(name);
             product.setInterestRate(rate);
             new CreditProductDAO().save(product);
