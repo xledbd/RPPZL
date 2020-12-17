@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="267.0" prefWidth="599.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rppzl.ui.controller.AddDepositViewController">
     <children>
         <AnchorPane layoutY="75.0" prefHeight="267.0" prefWidth="600.0" style="-fx-background-color: #fafafa;">
@@ -22,8 +21,8 @@
                         <Font size="24.0" />
                     </font>
                 </Label>
-                <ChoiceBox fx:id="typeOfDepositChoiceBox" layoutX="300.0" layoutY="61.0" prefHeight="26.0" prefWidth="211.0" />
-                <TextField fx:id="sumOfDepositTextField" layoutX="331.0" layoutY="116.0" prefHeight="26.0" prefWidth="190.0" />
+                <ChoiceBox fx:id="choiceBox" layoutX="300.0" layoutY="61.0" prefHeight="26.0" prefWidth="211.0" />
+                <TextField fx:id="textField" layoutX="331.0" layoutY="116.0" prefHeight="26.0" prefWidth="190.0" />
                 <Button layoutX="76.0" layoutY="193.0" mnemonicParsing="false" onAction="#changeSceneToAccountInfo" prefHeight="39.0" prefWidth="174.0" text="Назад">
                     <font>
                         <Font size="18.0" />

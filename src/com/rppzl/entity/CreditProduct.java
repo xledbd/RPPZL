@@ -43,4 +43,14 @@ public class CreditProduct {
 	public void setInterestRate(Double interestRate) {
 		this.interestRate = interestRate;
 	}
+
+	@Transient
+	public String getCredit() {
+		return name + ", Ставка: " + interestRate + "%";
+	}
+
+	@Override
+	public String toString() {
+		return getCredit();
+	}
 }

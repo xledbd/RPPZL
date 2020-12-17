@@ -1,5 +1,9 @@
 package com.rppzl.ui.controller;
 
+import com.rppzl.dao.CreditAccountDAO;
+import com.rppzl.dao.DepositAccountDAO;
+import com.rppzl.entity.CreditAccount;
+import com.rppzl.entity.DepositAccount;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class MainMenuController {
     @FXML private Button addButton;
@@ -103,6 +108,19 @@ public class MainMenuController {
     }
 
     public void closeBankDayButtonPressed(ActionEvent event) throws IOException{
-
+        List<DepositAccount> depositAccountList = new DepositAccountDAO().getList();
+        for (DepositAccount d : depositAccountList) {
+            Double rate = d.getProduct().getInterestRate() / 100 / 365;
+            Double delta = d.getSum() * rate;
+            d.setSum(d.getSum() + delta);
+            new DepositAccountDAO().save(d);
+        }
+        List<CreditAccount> creditAccountList = new CreditAccountDAO().getList();
+        for (CreditAccount c : creditAccountList) {
+            Double rate = c.getProduct().getInterestRate() / 100 / 365;
+            Double delta = c.getSum() * rate;
+            c.setSum(c.getSum() - delta);
+            new CreditAccountDAO().save(c);
+        }
     }
 }

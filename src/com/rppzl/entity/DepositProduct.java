@@ -42,4 +42,14 @@ public class DepositProduct {
 	public void setInterestRate(Double interestRate) {
 		this.interestRate = interestRate;
 	}
+
+	@Transient
+	public String getDeposit() {
+		return name + ", Ставка: " + interestRate + "%";
+	}
+
+	@Override
+	public String toString() {
+		return getDeposit();
+	}
 }

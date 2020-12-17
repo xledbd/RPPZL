@@ -7,15 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="454.0" prefWidth="634.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rppzl.ui.controller.PrintOpenAccountsViewController">
    <children>
       <TableView fx:id="openAccountsTableView" layoutY="61.0" prefHeight="340.0" prefWidth="634.0">
         <columns>
           <TableColumn fx:id="accountNumberTableColumn" prefWidth="197.59998166561127" text="№ Счета" />
-            <TableColumn fx:id="accountSumTableColumn" prefWidth="104.0" text="Сумма" />
-            <TableColumn fx:id="balanceTableColumn" prefWidth="106.4000244140625" text="Баланс" />
-            <TableColumn fx:id="procentTableColumn" prefWidth="115.19998168945312" text="Процент" />
+            <TableColumn fx:id="accountSumTableColumn" prefWidth="122.0" text="Название" />
+            <TableColumn fx:id="balanceTableColumn" prefWidth="111.0" text="Баланс" />
+            <TableColumn fx:id="procentTableColumn" prefWidth="94.0" text="Процент" />
           <TableColumn fx:id="startDateTableColumn" prefWidth="111.2000732421875" text="Дата открытия" />
         </columns>
       </TableView>
