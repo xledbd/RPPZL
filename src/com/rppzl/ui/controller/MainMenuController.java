@@ -101,4 +101,8 @@ public class MainMenuController {
         window.setScene(signupViewScene);
         window.show();
     }
+
+    public void closeBankDayButtonPressed(ActionEvent event) throws IOException{
+
+    }
 }
