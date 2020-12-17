@@ -132,7 +132,7 @@ public class PrintClientViewController implements Initializable {
         window.show();
     }
 
-    public void changeSceneToCountInfo(ActionEvent event) throws IOException
+    public void changeSceneToAccountInfo(ActionEvent event) throws IOException
     {
         List<PersonalAccount> list = new PersonalAccountDAO().getList();
         PersonalAccount account = null;
