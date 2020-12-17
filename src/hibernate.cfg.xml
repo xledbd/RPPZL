@@ -30,6 +30,9 @@
         <mapping class="com.rppzl.entity.Client" />
         <mapping class="com.rppzl.entity.DepositProduct" />
         <mapping class="com.rppzl.entity.CreditProduct" />
+        <mapping class="com.rppzl.entity.PersonalAccount" />
+        <mapping class="com.rppzl.entity.DepositAccount" />
+        <mapping class="com.rppzl.entity.CreditAccount" />
 
     </session-factory>
 
