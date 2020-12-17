@@ -73,4 +73,32 @@ public class MainMenuController {
         window.setScene(signupViewScene);
         window.show();
     }
+
+    public void changeSceneToCreditMenuView(ActionEvent event) throws IOException
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com/rppzl/ui/fxml/CreditMenuView.fxml"));
+        Parent signupViewParent = loader.load();
+
+        Scene signupViewScene = new Scene(signupViewParent);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setTitle("Управление кредитами");
+        window.setScene(signupViewScene);
+        window.show();
+    }
+
+    public void changeSceneToDepositMenuView(ActionEvent event) throws IOException
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com/rppzl/ui/fxml/DepositMenuView.fxml"));
+        Parent signupViewParent = loader.load();
+
+        Scene signupViewScene = new Scene(signupViewParent);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setTitle("Управление вкладами");
+        window.setScene(signupViewScene);
+        window.show();
+    }
 }
