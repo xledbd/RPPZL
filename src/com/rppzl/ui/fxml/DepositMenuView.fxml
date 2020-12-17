@@ -7,7 +7,6 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -28,7 +27,7 @@
                                         <TableView fx:id="tableView" onMouseClicked="#tableRowSelected" prefHeight="521.0" prefWidth="550.0">
                                             <columns>
                                                 <TableColumn fx:id="nameColumn" prefWidth="418.0" text="Название" />
-                                                <TableColumn fx:id="priceColumn" prefWidth="130.0" text="Цена" />
+                                                <TableColumn fx:id="rateColumn" prefWidth="130.0" text="Ставка (в %)" />
                                             </columns>
                                             <columnResizePolicy>
                                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -41,27 +40,17 @@
                                                         <Font size="14.0" />
                                                     </font>
                                                 </TextField>
-                                                <TextField fx:id="priceFieldEdit" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="238.0" promptText="Цена">
+                                                <TextField fx:id="rateFieldEdit" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="238.0" promptText="Ставка">
                                                     <font>
                                                         <Font size="14.0" />
                                                     </font>
                                                 </TextField>
-                                                <TextArea fx:id="descriptionFieldEdit" prefHeight="147.0" prefWidth="240.0" promptText="Описание">
-                                                    <VBox.margin>
-                                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                    </VBox.margin>
-                                                </TextArea>
                                                 <Button mnemonicParsing="false" onAction="#editButtonPressed" prefHeight="30.0" prefWidth="140.0" text="Сохранить">
                                                     <font>
                                                         <Font name="System Bold" size="14.0" />
                                                     </font>
                                                 </Button>
-                                                <Button mnemonicParsing="false" onAction="#removeButtonPressed" prefHeight="30.0" prefWidth="140.0" text="Удалить запись">
-                                                    <font>
-                                                        <Font name="System Bold" size="14.0" />
-                                                    </font>
-                                                </Button>
-                                                <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" text="История цен">
+                                                <Button mnemonicParsing="false" onAction="#removeButtonPressed" prefHeight="30.0" prefWidth="140.0" text="Удалить">
                                                     <font>
                                                         <Font name="System Bold" size="14.0" />
                                                     </font>
@@ -89,16 +78,11 @@
                                                 <Font size="14.0" />
                                             </font>
                                         </TextField>
-                                        <TextField fx:id="priceField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="434.0" promptText="Цена">
+                                        <TextField fx:id="rateField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="434.0" promptText="Ставка">
                                             <font>
                                                 <Font size="14.0" />
                                             </font>
                                         </TextField>
-                                        <TextArea fx:id="descriptionField" prefHeight="156.0" prefWidth="433.0" promptText="Описание">
-                                            <VBox.margin>
-                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                            </VBox.margin>
-                                        </TextArea>
                                         <Button mnemonicParsing="false" onAction="#addButtonPressed" prefHeight="30.0" prefWidth="140.0" text="Добавить">
                                             <font>
                                                 <Font name="System Bold" size="14.0" />
