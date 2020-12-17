@@ -2,7 +2,9 @@ package com.rppzl.ui.controller;
 
 import com.rppzl.dao.ClientDAO;
 import com.rppzl.dao.DAO;
+import com.rppzl.dao.PersonalAccountDAO;
 import com.rppzl.entity.Client;
+import com.rppzl.entity.PersonalAccount;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -132,6 +134,15 @@ public class PrintClientViewController implements Initializable {
 
     public void changeSceneToCountInfo(ActionEvent event) throws IOException
     {
+        List<PersonalAccount> list = new PersonalAccountDAO().getList();
+        PersonalAccount account = null;
+        for (PersonalAccount p : list) {
+            if (tableView.getSelectionModel().getSelectedItem().getId() == p.getClient().getId()) {
+                account = p;
+            }
+        }
+        AccountViewController.account = account;
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/com/rppzl/ui/fxml/AccountView.fxml"));
         Parent signupViewParent = loader.load();

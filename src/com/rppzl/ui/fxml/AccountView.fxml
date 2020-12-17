@@ -5,14 +5,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="328.0" prefWidth="441.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rppzl.ui.controller.AccountViewController">
+<AnchorPane prefHeight="335.0" prefWidth="442.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rppzl.ui.controller.AccountViewController">
    <children>
-      <Label layoutX="121.0" layoutY="3.0" text="Меню счета" textFill="#e26464">
+      <Label layoutX="121.0" layoutY="3.0" prefHeight="29.0" prefWidth="200.0" text="Меню счета" textFill="#e26464">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <AnchorPane layoutY="62.0" prefHeight="266.0" prefWidth="442.0" style="-fx-background-color: #fafafa;">
+      <Label fx:id="numLabel" alignment="CENTER" layoutX="77.0" layoutY="49.0" prefHeight="39.0" prefWidth="289.0" text="num" textFill="#e26464">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutY="88.0" prefHeight="266.0" prefWidth="442.0" style="-fx-background-color: #fafafa;">
          <children>
             <Button layoutX="96.0" layoutY="20.0" mnemonicParsing="false" onAction="#changeSceneToAddCreditView" prefHeight="68.0" prefWidth="250.0" text="Взять кредит" />
             <Button layoutX="96.0" layoutY="99.0" mnemonicParsing="false" onAction="#changeSceneToAddDepositView" prefHeight="68.0" prefWidth="250.0" text="Сделать вклад" />

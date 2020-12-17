@@ -1,15 +1,25 @@
 package com.rppzl.ui.controller;
 
+import com.rppzl.entity.PersonalAccount;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class AccountViewController {
+public class AccountViewController implements Initializable {
+
+    public static PersonalAccount account;
+
+    @FXML private Label numLabel;
 
     public void changeSceneToAddDepositView(ActionEvent event) throws IOException
     {
@@ -50,5 +60,10 @@ public class AccountViewController {
         window.setTitle("Добавление кредита");
         window.setScene(signupViewScene);
         window.show();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        numLabel.setText(account.getNumber());
     }
 }
