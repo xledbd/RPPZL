@@ -31,6 +31,7 @@ public class PrintClientViewController implements Initializable {
     @FXML private Button editButton;
     @FXML private Button removeButton;
     @FXML private Button infoButton;
+    @FXML private Button countButton;
 
     @FXML private TableView<Client> tableView;
     @FXML private TableColumn<Client, String> lastNameColumn;
@@ -77,6 +78,7 @@ public class PrintClientViewController implements Initializable {
         editButton.setVisible(false);
         removeButton.setVisible(false);
         infoButton.setVisible(false);
+        countButton.setVisible(false);
     }
 
     public void tableRowSelected(MouseEvent event){
@@ -85,6 +87,7 @@ public class PrintClientViewController implements Initializable {
             editButton.setVisible(true);
             removeButton.setVisible(true);
             infoButton.setVisible(true);
+            countButton.setVisible(true);
         }
     }
 
@@ -126,6 +129,21 @@ public class PrintClientViewController implements Initializable {
         window.setScene(signupViewScene);
         window.show();
     }
+
+    public void changeSceneToCountInfo(ActionEvent event) throws IOException
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com/rppzl/ui/fxml/AccountView.fxml"));
+        Parent signupViewParent = loader.load();
+
+        Scene signupViewScene = new Scene(signupViewParent);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setTitle("Счет клиента");
+        window.setScene(signupViewScene);
+        window.show();
+    }
+
 
 }
 

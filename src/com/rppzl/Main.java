@@ -2,9 +2,13 @@ package com.rppzl;
 
 import com.rppzl.db.SessionFactorySingleton;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -22,5 +26,7 @@ public class Main extends Application {
 		primaryStage.setTitle("Добро пожаловать");
 		primaryStage.setScene(scene);
 		primaryStage.show();
+
+
 	}
 }
