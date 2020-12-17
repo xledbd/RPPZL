@@ -130,7 +130,7 @@ public class PrintClientViewController implements Initializable {
         window.show();
     }
 
-    public void changeSceneToCountInfo(ActionEvent event) throws IOException
+    public void changeSceneToAccountInfo(ActionEvent event) throws IOException
     {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/com/rppzl/ui/fxml/AccountView.fxml"));

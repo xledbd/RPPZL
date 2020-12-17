@@ -24,7 +24,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </BorderPane.margin>
                <children>
-                  <Button fx:id="countButton" mnemonicParsing="false" onAction="#changeSceneToCountInfo" prefHeight="26.0" prefWidth="82.0" text="Счет" />
+                  <Button fx:id="countButton" mnemonicParsing="false" onAction="#changeSceneToAccountInfo" prefHeight="26.0" prefWidth="82.0" text="Счет" />
                   <Button fx:id="infoButton" mnemonicParsing="false" onAction="#changeSceneToPrintFullInfo" text="Посмотреть полную информацию" />
                   <Button fx:id="editButton" mnemonicParsing="false" onAction="#changeSceneToEditClientView" text="Редактировать" />
                   <Button fx:id="removeButton" mnemonicParsing="false" onAction="#removeButtonPressed" prefHeight="26.0" prefWidth="90.0" text="Удалить" />
